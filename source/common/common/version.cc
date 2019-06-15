@@ -20,9 +20,9 @@ const std::string& VersionInfo::revisionStatus() {
 std::string VersionInfo::version() {
   return fmt::format("{}/{}/{}/{}/{}", revision(), BUILD_VERSION_NUMBER, revisionStatus(),
 #ifdef NDEBUG
-                     "RELEASE",
+                     "HOWARDJOHN",
 #else
-                     "DEBUG",
+                     "HOWARDJOHN",
 #endif
                      ENVOY_SSL_VERSION);
 }

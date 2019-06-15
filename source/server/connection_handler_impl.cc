@@ -123,6 +123,7 @@ ConnectionHandlerImpl::findActiveListenerByAddress(const Network::Address::Insta
 
   // If there is exact address match, return the corresponding listener.
   if (listener_it != listeners_.end()) {
+    ENVOY_LOG(error,"howardjohn: exact matched {} to {}", address.asString(), listener_it->first.asString());
     return listener_it->second.get();
   }
 
@@ -137,6 +138,8 @@ ConnectionHandlerImpl::findActiveListenerByAddress(const Network::Address::Insta
 
    // If there is exact address match, return the corresponding listener.
   if (listener_it != listeners_.end()) {
+    ENVOY_LOG(error, "howardjohn: exact + wildcard port matched {} to {}", address.asString(),
+              listener_it->first.asString());
     return listener_it->second.get();
   }
 
@@ -149,6 +152,8 @@ ConnectionHandlerImpl::findActiveListenerByAddress(const Network::Address::Insta
         return p.second->listener_ != nullptr && p.first->type() == Network::Address::Type::Ip &&
                p.first->ip()->port() == address.ip()->port() && p.first->ip()->isAnyAddress();
       });
+  ENVOY_LOG(error, "howardjohn: wildcard matched {} to {}", address.asString(),
+            listener_it->first.asString());
   return (listener_it != listeners_.end()) ? listener_it->second.get() : nullptr;
 }
 
