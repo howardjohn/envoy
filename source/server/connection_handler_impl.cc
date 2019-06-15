@@ -126,6 +126,20 @@ ConnectionHandlerImpl::findActiveListenerByAddress(const Network::Address::Insta
     return listener_it->second.get();
   }
 
+ // Next we look for matching IP but port 0
+  listener_it = std::find_if(
+      listeners_.begin(), listeners_.end(),
+      [&address](
+          const std::pair<Network::Address::InstanceConstSharedPtr, ActiveListenerBasePtr>& p) {
+        return p.second->listener_ != nullptr && p.first->type() == Network::Address::Type::Ip &&
+               p.first->ip()->port() == 0 && p.first->ip() == address.ip();
+      });
+
+   // If there is exact address match, return the corresponding listener.
+  if (listener_it != listeners_.end()) {
+    return listener_it->second.get();
+  }
+
   // Otherwise, we need to look for the wild card match, i.e., 0.0.0.0:[address_port].
   // We do not return stopped listeners.
   // TODO(wattli): consolidate with previous search for more efficiency.
