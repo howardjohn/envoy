@@ -79,17 +79,23 @@ if [[ `uname -m` == "aarch64" ]]; then
 fi
 
 # Build wee8.
-if [[ "$$(uname -s)" == "Darwin" ]]; then
+if [[ -x "$$(command -v gn)" ]]; then
+  # Using system default gn tools
+  gn=$$(command -v gn)
+elif [[ "$$(uname -s)" == "Darwin" ]]; then
   gn=buildtools/mac/gn
-  ninja=third_party/depot_tools/ninja
 elif [[ "$$(uname -s)-$$(uname -m)" == "Linux-x86_64" ]]; then
   gn=buildtools/linux64/gn
-  ninja=third_party/depot_tools/ninja
-else
-  # Using system default ninja & gn tools
-  gn=$$(command -v gn)
-  ninja=$$(command -v ninja)
 fi
+if [[ -x "$$(command -v ninja)" ]]; then
+  # Using system default ninja tools
+  ninja=$$(command -v ninja)
+elif [[ "$$(uname -s)" == "Darwin" ]]; then
+  ninja=third_party/depot_tools/ninja
+elif [[ "$$(uname -s)-$$(uname -m)" == "Linux-x86_64" ]]; then
+  ninja=third_party/depot_tools/ninja
+fi
+
 "$$gn" gen out/wee8 --args="$$WEE8_BUILD_ARGS"
 "$$ninja" -C out/wee8 wee8
 
