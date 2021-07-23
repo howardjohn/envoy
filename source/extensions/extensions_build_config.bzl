@@ -9,7 +9,7 @@ EXTENSIONS = {
     "envoy.access_loggers.tcp_grpc":                    "//source/extensions/access_loggers/grpc:tcp_config",
     "envoy.access_loggers.open_telemetry":              "//source/extensions/access_loggers/open_telemetry:config",
     "envoy.access_loggers.stream":                      "//source/extensions/access_loggers/stream:config",
-    "envoy.access_loggers.wasm":                        "//source/extensions/access_loggers/wasm:config",
+   # "envoy.access_loggers.wasm":                        "//source/extensions/access_loggers/wasm:config",
 
     #
     # Clusters
@@ -39,7 +39,7 @@ EXTENSIONS = {
     # WASM
     #
 
-    "envoy.bootstrap.wasm":                             "//source/extensions/bootstrap/wasm:config",
+    #"envoy.bootstrap.wasm":                             "//source/extensions/bootstrap/wasm:config",
 
     #
     # Health checkers
@@ -95,7 +95,7 @@ EXTENSIONS = {
     # Disabled by default
     "envoy.filters.http.kill_request":                  "//source/extensions/filters/http/kill_request:kill_request_config",
     "envoy.filters.http.local_ratelimit":               "//source/extensions/filters/http/local_ratelimit:config",
-    "envoy.filters.http.lua":                           "//source/extensions/filters/http/lua:config",
+    #"envoy.filters.http.lua":                           "//source/extensions/filters/http/lua:config",
     "envoy.filters.http.oauth2":                        "//source/extensions/filters/http/oauth2:config",
     "envoy.filters.http.on_demand":                     "//source/extensions/filters/http/on_demand:config",
     "envoy.filters.http.original_src":                  "//source/extensions/filters/http/original_src:config",
@@ -105,7 +105,7 @@ EXTENSIONS = {
     "envoy.filters.http.set_metadata":                  "//source/extensions/filters/http/set_metadata:config",
     "envoy.filters.http.squash":                        "//source/extensions/filters/http/squash:config",
     "envoy.filters.http.tap":                           "//source/extensions/filters/http/tap:config",
-    "envoy.filters.http.wasm":                          "//source/extensions/filters/http/wasm:config",
+    #"envoy.filters.http.wasm":                          "//source/extensions/filters/http/wasm:config",
 
     #
     # Listener filters
@@ -145,7 +145,7 @@ EXTENSIONS = {
     "envoy.filters.network.thrift_proxy":                         "//source/extensions/filters/network/thrift_proxy:config",
     "envoy.filters.network.sni_cluster":                          "//source/extensions/filters/network/sni_cluster:config",
     "envoy.filters.network.sni_dynamic_forward_proxy":            "//source/extensions/filters/network/sni_dynamic_forward_proxy:config",
-    "envoy.filters.network.wasm":                                 "//source/extensions/filters/network/wasm:config",
+    #"envoy.filters.network.wasm":                                 "//source/extensions/filters/network/wasm:config",
     "envoy.filters.network.zookeeper_proxy":                      "//source/extensions/filters/network/zookeeper_proxy:config",
 
     #
@@ -171,7 +171,7 @@ EXTENSIONS = {
     "envoy.stat_sinks.hystrix":                         "//source/extensions/stat_sinks/hystrix:config",
     "envoy.stat_sinks.metrics_service":                 "//source/extensions/stat_sinks/metrics_service:config",
     "envoy.stat_sinks.statsd":                          "//source/extensions/stat_sinks/statsd:config",
-    "envoy.stat_sinks.wasm":                            "//source/extensions/stat_sinks/wasm:config",
+   # "envoy.stat_sinks.wasm":                            "//source/extensions/stat_sinks/wasm:config",
 
     #
     # Thrift filters
@@ -246,11 +246,11 @@ EXTENSIONS = {
     # WebAssembly runtimes
     #
 
-    "envoy.wasm.runtime.null":                          "//source/extensions/wasm_runtime/null:config",
-    "envoy.wasm.runtime.v8":                            "//source/extensions/wasm_runtime/v8:config",
-    "envoy.wasm.runtime.wamr":                          "//source/extensions/wasm_runtime/wamr:config",
-    "envoy.wasm.runtime.wavm":                          "//source/extensions/wasm_runtime/wavm:config",
-    "envoy.wasm.runtime.wasmtime":                      "//source/extensions/wasm_runtime/wasmtime:config",
+    #"envoy.wasm.runtime.null":                          "//source/extensions/wasm_runtime/null:config",
+    #"envoy.wasm.runtime.v8":                            "//source/extensions/wasm_runtime/v8:config",
+    #"envoy.wasm.runtime.wamr":                          "//source/extensions/wasm_runtime/wamr:config",
+    #"envoy.wasm.runtime.wavm":                          "//source/extensions/wasm_runtime/wavm:config",
+    #"envoy.wasm.runtime.wasmtime":                      "//source/extensions/wasm_runtime/wasmtime:config",
 
     #
     # Rate limit descriptors

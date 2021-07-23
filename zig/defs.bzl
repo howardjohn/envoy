@@ -23,53 +23,19 @@ DEFAULT_INCLUDE_DIRECTORIES = [
 # https://github.com/ziglang/zig/blob/0cfa39304b18c6a04689bd789f5dc4d035ec43b0/src/main.zig#L2962-L2966
 TARGET_CONFIGS = [
     struct(
-        target="x86_64-macos-gnu",
-        includes=[
-            "libcxx/include",
-            "libcxxabi/include",
-            "libunwind/include",
-            "libc/include/any-macos-any",
-            "libc/include/x86_64-macos-any",
-            "libc/include/x86_64-macos-gnu",
-        ],
-        # linkopts=["-lc++", "-lc++abi"],
-        linkopts=[],
-        copts=[],
-        bazel_target_cpu="darwin",
-        constraint_values=["@platforms//os:macos", "@platforms//cpu:x86_64"],
-        tool_paths={"ld": "ld64.lld"},
-    ),
-    struct(
-        target="x86_64-linux-gnu.2.28",
+        target="aarch64-linux-gnu.2.18",
         includes=[
             "libcxx/include",
             "libcxxabi/include",
             "libunwind/include",
             "libc/include/generic-glibc",
             "libc/include/any-linux-any",
-            "libc/include/x86_64-linux-gnu",
-            "libc/include/x86_64-linux-any",
+            "libc/include/aarch64-linux-gnu",
+            "libc/include/aarch64-linux-any",
         ],
         linkopts=["-lc++", "-lc++abi"],
         copts=[],
-        bazel_target_cpu="k8",
-        constraint_values=["@platforms//os:linux", "@platforms//cpu:x86_64"],
-        tool_paths={"ld": "ld.lld"},
-    ),
-    struct(
-        target="aarch64-linux-gnu",
-        includes=[
-            "libcxx/include",
-            "libcxxabi/include",
-            "libunwind/include",
-            "libc/include/generic-glibc",
-            "libc/include/any-linux-any",
-            "libc/include/x86_64-linux-gnu",
-            "libc/include/x86_64-linux-any",
-        ],
-        linkopts=["-lc++", "-lc++abi"],
-        copts=[],
-        bazel_target_cpu="k8",
+        bazel_target_cpu="aarch64",
         constraint_values=["@platforms//os:linux", "@platforms//cpu:arm64"],
         tool_paths={"ld": "ld.lld"},
     ),
@@ -159,6 +125,7 @@ def register_all_toolchains():
 ZIG_TOOL_PATH = "tools/{zig_tool}"
 ZIG_TOOL_WRAPPER = """#!/bin/bash
 export HOME=$TMPDIR
+export ARCH=aarch64
 if [[ "{zig_tool}" == cc ]]; then
   exec "{zig}" c++ "$@" -target aarch64-linux-gnu
 fi
