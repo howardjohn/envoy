@@ -127,9 +127,9 @@ ZIG_TOOL_WRAPPER = """#!/bin/bash
 export HOME=$TMPDIR
 export ARCH=aarch64
 if [[ "{zig_tool}" == cc ]]; then
-  exec "{zig}" c++ "$@" -target aarch64-linux-gnu
+  exec "{zig}" c++ "$@" -target aarch64-linux-gnu.2.18
 fi
-exec "{zig}" "{zig_tool}" "$@" -target aarch64-linux-gnu
+exec "{zig}" "{zig_tool}" "$@" -target aarch64-linux-gnu.2.18
 """
 
 ZIG_TOOLS = [
