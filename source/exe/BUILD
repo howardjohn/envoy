@@ -26,7 +26,7 @@ envoy_cc_binary(
         "//bazel:windows_opt_build": ["generate_pdb_file"],
         "//conditions:default": [],
     }),
-    stamped = True,
+    stamped = False,
     deps = [":envoy_main_entry_lib"],
 )
 

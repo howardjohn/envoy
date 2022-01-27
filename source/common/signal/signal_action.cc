@@ -106,8 +106,7 @@ void SignalAction::mapAndProtectStackMemory() {
                                       MAP_PRIVATE | MAP_ANONYMOUS | MAP_STACK, -1, 0));
   RELEASE_ASSERT(altstack_, "");
   RELEASE_ASSERT(mprotect(altstack_, guard_size_, PROT_NONE) == 0, "");
-  RELEASE_ASSERT(mprotect(altstack_ + guard_size_ + altstack_size_, guard_size_, PROT_NONE) == 0,
-                 "");
+  RELEASE_ASSERT(mprotect(altstack_ + guard_size_ + altstack_size_, guard_size_, PROT_NONE) == 0, fmt::format("alt size: {}, guard size: {}, stack: {}, page: {}, sigstk: {}, comb:{}", altstack_size_, guard_size_, fmt::ptr(altstack_), sysconf(_SC_PAGE_SIZE), MINSIGSTKSZ, std::max(guard_size_ * 4, static_cast<size_t>(MINSIGSTKSZ)) ));
 }
 
 void SignalAction::unmapStackMemory() { munmap(altstack_, mapSizeWithGuards()); }

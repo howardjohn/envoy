@@ -10,11 +10,11 @@ http_archive(
     ],
     sha256 = "c6966ec828da198c5d9adbaa94c05e3a1c7f21bd012a0b29ba8ddbccb2c93b0d",
 )
-BAZEL_ZIG_CC_VERSION = "v0.4.0"
+BAZEL_ZIG_CC_VERSION = "v0.4.2"
 
 http_archive(
     name = "bazel-zig-cc",
-    sha256 = "60f489393e11d6d71d44cdf5b961a941925536ec3735138555a57a8c348b5a17",
+    sha256 = "135f906ebf936a282b53e2d4516cdc86a283880ac4d6f3399f6fced2cd86c768",
     strip_prefix = "bazel-zig-cc-{}".format(BAZEL_ZIG_CC_VERSION),
     urls = ["https://git.sr.ht/~motiejus/bazel-zig-cc/archive/{}.tar.gz".format(BAZEL_ZIG_CC_VERSION)],
 )
@@ -22,7 +22,7 @@ http_archive(
 load("@bazel-zig-cc//toolchain:defs.bzl", zig_register_toolchains = "register_toolchains")
 
 zig_register_toolchains(register = [
-    "x86_64-linux-gnu.2.28",
+    "x86_64-linux-gnu.2.33",
 ])
 
 load("//bazel:api_binding.bzl", "envoy_api_binding")
