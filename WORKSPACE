@@ -23,7 +23,12 @@ load("@bazel-zig-cc//toolchain:defs.bzl", zig_register_toolchains = "register_to
 
 zig_register_toolchains(register = [
     "x86_64-linux-gnu.2.33",
-])
+],
+version = "0.10.0-dev.490+dd7309bde",
+url_format= "https://ziglang.org/builds/zig-{host_platform}-{version}.tar.xz",
+host_platform_sha256= {
+    "linux-x86_64": "45af0295e8a26bcae5bf92b4cb73694211498287816d9e891ed3b053e7c13016"
+})
 
 load("//bazel:api_binding.bzl", "envoy_api_binding")
 

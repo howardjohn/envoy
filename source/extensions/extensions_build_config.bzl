@@ -96,7 +96,7 @@ EXTENSIONS = {
     # Disabled by default
     "envoy.filters.http.kill_request":                  "//source/extensions/filters/http/kill_request:kill_request_config",
     "envoy.filters.http.local_ratelimit":               "//source/extensions/filters/http/local_ratelimit:config",
-    "envoy.filters.http.lua":                           "//source/extensions/filters/http/lua:config",
+    #"envoy.filters.http.lua":                           "//source/extensions/filters/http/lua:config",
     "envoy.filters.http.oauth2":                        "//source/extensions/filters/http/oauth2:config",
     "envoy.filters.http.on_demand":                     "//source/extensions/filters/http/on_demand:config",
     "envoy.filters.http.original_src":                  "//source/extensions/filters/http/original_src:config",
@@ -199,7 +199,7 @@ EXTENSIONS = {
     "envoy.transport_sockets.raw_buffer":               "//source/extensions/transport_sockets/raw_buffer:config",
     "envoy.transport_sockets.tap":                      "//source/extensions/transport_sockets/tap:config",
     "envoy.transport_sockets.starttls":                 "//source/extensions/transport_sockets/starttls:config",
-    #"envoy.transport_sockets.tcp_stats":                "//source/extensions/transport_sockets/tcp_stats:config",
+    "envoy.transport_sockets.tcp_stats":                "//source/extensions/transport_sockets/tcp_stats:config",
 
     #
     # Retry host predicates
