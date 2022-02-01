@@ -13,6 +13,14 @@ alias(
     actual = "//source/exe:envoy",
 )
 
+platform(
+    name = "linux_aarch64",
+    constraint_values = [
+        "@bazel_tools//platforms:linux",
+        "@bazel_tools//platforms:aarch64",
+    ]
+)
+
 # These two definitions exist to help reduce Envoy upstream core code depending on extensions.
 # To avoid visibility problems, see notes in source/extensions/extensions_build_config.bzl
 #
