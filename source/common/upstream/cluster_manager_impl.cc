@@ -201,7 +201,9 @@ void ClusterManagerInitHelper::maybeFinishInitialize() {
         const auto eds_type_url =
             Config::getTypeUrl<envoy::config::endpoint::v3::ClusterLoadAssignment>();
         const auto leds_type_url = Config::getTypeUrl<envoy::config::endpoint::v3::LbEndpoint>();
-        maybe_resume_eds_leds = cm_.adsMux()->pause({eds_type_url, leds_type_url});
+        maybe_resume_eds_leds = cm_.adsMux()->pause(
+            {eds_type_url, leds_type_url,
+             "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.Secret"});
       }
       initializeSecondaryClusters();
     }

@@ -45,7 +45,8 @@ void LdsApiImpl::onConfigUpdate(const std::vector<Config::DecodedResourceRef>& a
   Config::ScopedResume maybe_resume_rds;
   if (cm_.adsMux()) {
     const auto type_url = Config::getTypeUrl<envoy::config::route::v3::RouteConfiguration>();
-    maybe_resume_rds = cm_.adsMux()->pause(type_url);
+    maybe_resume_rds = cm_.adsMux()->pause(
+        {type_url, "type.googleapis.com/envoy.extensions.transport_sockets.tls.v3.Secret"});
   }
 
   bool any_applied = false;
