@@ -3,6 +3,7 @@ load("@envoy_api//bazel:envoy_http_archive.bzl", "envoy_http_archive")
 load("@envoy_api//bazel:external_deps.bzl", "load_repository_locations")
 load(":dev_binding.bzl", "envoy_dev_binding")
 load(":repository_locations.bzl", "PROTOC_VERSIONS", "REPOSITORY_LOCATIONS_SPEC")
+load("@bazel_tools//tools/build_defs/repo:http.bzl", "http_archive")
 
 PPC_SKIP_TARGETS = ["envoy.filters.http.lua"]
 
@@ -373,6 +374,11 @@ def envoy_dependencies(skip_targets = []):
     )
 
     _com_github_fdio_vpp_vcl()
+    http_archive(
+        name = "io_tweag_rules_nixpkgs",
+        strip_prefix = "rules_nixpkgs-9b13ed0469116a37658040a7b62d70aea90ad0bc",
+        urls = ["https://github.com/tweag/rules_nixpkgs/archive/9b13ed0469116a37658040a7b62d70aea90ad0bc.tar.gz"],
+    )
 
     # Unconditional, since we use this only for compiler-agnostic fuzzing utils.
     _org_llvm_releases_compiler_rt()

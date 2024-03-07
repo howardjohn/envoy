@@ -525,6 +525,10 @@ build:rbe-envoy-engflow --config=bes-envoy-engflow
 build:rbe-envoy-engflow --remote_executor=grpcs://morganite.cluster.engflow.com
 build:rbe-envoy-engflow --remote_default_exec_properties=container-image=docker://docker.io/envoyproxy/envoy-build-ubuntu:0ca52447572ee105a4730da5e76fe47c9c5a7c64@sha256:d736c58f06f36848e7966752cc7e01519cc1b5101a178d5c6634807e8ac3deab
 
+# build:nix --incompatible_enable_cc_toolchain_resolution
+build:nix --config=libc++
+build:nix --crosstool_top @nixpkgs_config_cc//:toolchain
+
 #############################################################################
 # debug: Various Bazel debugging flags
 #############################################################################

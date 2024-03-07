@@ -17,6 +17,8 @@ load("@aspect_bazel_lib//lib:repositories.bzl", "register_jq_toolchains", "regis
 load("@com_google_cel_cpp//bazel:deps.bzl", "parser_deps")
 load("@com_github_chrusty_protoc_gen_jsonschema//:deps.bzl", protoc_gen_jsonschema_go_dependencies = "go_dependencies")
 load("@rules_proto_grpc//:repositories.bzl", "rules_proto_grpc_toolchains")
+#load("@io_tweag_rules_nixpkgs//nixpkgs:repositories.bzl", "rules_nixpkgs_dependencies")
+#load("@io_tweag_rules_nixpkgs//nixpkgs:nixpkgs.bzl", "nixpkgs_git_repository", "nixpkgs_package", "nixpkgs_cc_configure")
 
 # go version for rules_go
 GO_VERSION = "1.20"
@@ -25,6 +27,18 @@ JQ_VERSION = "1.7"
 YQ_VERSION = "4.24.4"
 
 def envoy_dependency_imports(go_version = GO_VERSION, jq_version = JQ_VERSION, yq_version = YQ_VERSION):
+    #rules_nixpkgs_dependencies()
+    #nixpkgs_git_repository(
+    #    name = "nixpkgs",
+    #    revision = "23.11", # Any tag or commit hash
+    #    sha256 = "" # optional sha to verify package integrity!
+    #)
+    #nixpkgs_cc_configure(
+    #name = "nixpkgs_config_cc",
+    #repository = "@nixpkgs",
+    #attribute_path = "clang_17",
+    #)
+
     rules_foreign_cc_dependencies()
     go_rules_dependencies()
     go_register_toolchains(go_version)
