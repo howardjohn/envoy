@@ -51,6 +51,8 @@ envoy_cc_test(
     srcs = ["substitution_formatter_test.cc"],
     rbe_pool = "6gig",
     deps = [
+        "//source/extensions/formatter/cel:cel_lib",
+        "//source/extensions/formatter/cel:config",
         ":command_extension_lib",
         "//source/common/common:utility_lib",
         "//source/common/formatter:formatter_extension_lib",
@@ -98,6 +100,7 @@ envoy_cc_benchmark_binary(
     srcs = ["substitution_formatter_speed_test.cc"],
     rbe_pool = "6gig",
     deps = [
+        "//source/extensions/formatter/cel:config",
         "//source/common/formatter:formatter_extension_lib",
         "//source/common/formatter:substitution_formatter_lib",
         "//source/common/http:header_map_lib",
@@ -105,7 +108,9 @@ envoy_cc_benchmark_binary(
         "//test/common/stream_info:test_util",
         "//test/mocks/http:http_mocks",
         "//test/mocks/stream_info:stream_info_mocks",
+        "//test/mocks/server:factory_context_mocks",
         "//test/test_common:printers_lib",
+        "//test/test_common:test_runtime_lib",
         "@com_github_google_benchmark//:benchmark",
     ],
 )
