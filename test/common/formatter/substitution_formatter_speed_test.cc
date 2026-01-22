@@ -73,12 +73,13 @@ static void BMJ_NATIVE(benchmark::State& state) {
 
   std::unique_ptr<Envoy::Formatter::FormatterImpl> formatter =
       *Envoy::Formatter::FormatterImpl::create(LogFormat, false);
+  auto providers = *Formatter::SubstitutionFormatParser::parse(absl::StrCat("%REQ(header)%"));
 
-  const std::string output = formatter->format(formatter_context, *stream_info);
-  std::cout << output << std::endl; // Print the output to the console
+  // const absl::optional<std::string> output = providers[0]->format(formatter_context, *stream_info);
+  // std::cout << output << std::endl; // Print the output to the console
   size_t output_bytes = 0;
   for (auto _ : state) { // NOLINT: Silences warning about dead store
-    output_bytes += formatter->format(formatter_context, *stream_info).length();
+    providers[0]->format(formatter_context, *stream_info);
   }
   benchmark::DoNotOptimize(output_bytes);
 }
